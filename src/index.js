@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { RouterProvider } from 'react-router-dom';
+
+import router from './routes/route';
+import reportWebVitals from './configs/reportWebVitals';
+
+import './styles/globals.css';
+import 'bulma/css/bulma.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}>
+
+    </RouterProvider>
   </React.StrictMode>
 );
 

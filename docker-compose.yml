@@ -1,0 +1,11 @@
+version: "3.6"
+services:
+  rodeo:
+    container_name: client
+    image: client:latest
+    restart: always
+    hostname: client
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
