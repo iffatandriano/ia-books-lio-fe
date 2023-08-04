@@ -2,7 +2,8 @@ import React, { useCallback, useEffect } from 'react';
 import _ from 'lodash';
 
 import Button from '../../../components/Button';
-import CardBook from '../../../components/CardBook';
+import CardContainer from '../../../components/card/CardContainer';
+import CardItem from '../../../components/card/CardItem';
 
 import useBookStore from '../../../store/books';
 import useWishlistStore from '../../../store/wishlists';
@@ -66,43 +67,39 @@ const ListBook = ({ books, emptyMoreBooks }) => {
     }, [setNewRecords, setRecords, paramsWishlist, setIsLoading, records])
 
     return (
-        <section className='section'>
-                <div className='container'>
-                    <div className='is-flex is-flex-direction-column is-align-items-center'>
-                        <div className='columns is-multiline'>
-                            {
-                                books?.map((book, bookIndex) => (
-                                    <CardBook 
-                                        key={bookIndex}
-                                        books={books}
-                                        id={book.id}
-                                        title={book.title}
-                                        description={book.description}
-                                        wishlists={records}
-                                        authors={book.authors}
-                                        rating={book.rating}
-                                        thumbnail={book.images.thumbnail}
-                                        onClick={() => handleAddWishlist(book)}
-                                    />
-                                ))
-                            }
+        <CardContainer>
+            <div className='columns is-multiline'>
+                {
+                    books?.map((book, bookIndex) => (
+                        <CardItem 
+                            key={bookIndex}
+                            books={books}
+                            id={book.id}
+                            title={book.title}
+                            description={book.description}
+                            wishlists={records}
+                            authors={book.authors}
+                            rating={book.rating}
+                            thumbnail={book.images.thumbnail}
+                            onClick={() => handleAddWishlist(book)}
+                        />
+                    ))
+                }
+            </div>
+                {
+                    !emptyMoreBooks && books.length >= 8 ? (
+                        <div className='buttons'>
+                            <Button 
+                                label="View More books"
+                                styles="is-primary"
+                                isLoading={isLoadingMore}
+                                onClick={onLoadMoreBook}
+                                disabled={isLoadingMore}
+                            />
                         </div>
-                        {
-                            !emptyMoreBooks && books.length >= 8 ? (
-                                <div className='buttons'>
-                                    <Button 
-                                        label="View More books"
-                                        styles="is-primary"
-                                        isLoading={isLoadingMore}
-                                        onClick={onLoadMoreBook}
-                                        disabled={isLoadingMore}
-                                    />
-                                </div>
-                            ) : null
-                        }
-                    </div>
-                </div>
-            </section>
+                    ) : null
+                }
+        </CardContainer>
     );
 };
 

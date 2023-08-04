@@ -25,19 +25,19 @@ const Search = ({ searchBook, setSearchBook }) => {
                         <h2 className='subtitle is-block'>Search hundreds of thousands of books, and writer.</h2>
                         <h1 className="title is-1 is-block">Find A Book You Want To Know.</h1>
                         <div className="columns is-centered">
-                        <div className="column is-7">
-                            <div className="search-form">
-                                    <div className="field has-addons has-shadow-field">
-                                        <div className="control has-icons-left has-icons-right is-expanded">
-                                            <input type="text" id="mainSearch" defaultValue={searchBook} placeholder="Search Book Titles, Authors, Publishers" className="input is-large is-rounded is-focused" onChange={onSearch} /> 
-                                            <span className='icon is-small is-left'>
-                                                <BiSearchAlt />
-                                            </span>
-                                        </div> 
-                                    </div>
+                            <div className="column is-7">
+                                <div className="search-form">
+                                        <div className="field has-addons has-shadow-field">
+                                            <div className="control has-icons-left has-icons-right is-expanded">
+                                                <input type="text" id="mainSearch" defaultValue={searchBook} placeholder="Search Book Titles, Authors, Publishers" className="input is-large is-rounded is-focused" onChange={onSearch} /> 
+                                                <span className='icon is-small is-left'>
+                                                    <BiSearchAlt />
+                                                </span>
+                                            </div> 
+                                        </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
         </section>
